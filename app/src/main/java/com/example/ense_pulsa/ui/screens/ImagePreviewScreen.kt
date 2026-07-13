@@ -50,8 +50,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 enum class Isp(val label: String, val ussdFormat: String, val color: Color) {
-    TELKOMCEL("Telkomcel", "*122*%s#", Color(0xFFE53935)),
-    TELEMOR("Telemor", "*120*%s#", Color(0xFFFFA000)),
+    TELKOMCEL("Telkomcel", "*122*%s#", Color(0xFFFF9800)),
+    TELEMOR("Telemor", "*120*%s#", Color(0xFFFDD835)),
     TT("TT", "100%s", Color(0xFF1565C0))
 }
 
