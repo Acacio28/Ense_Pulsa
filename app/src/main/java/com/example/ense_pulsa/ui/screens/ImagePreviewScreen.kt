@@ -211,7 +211,7 @@ fun ImagePreviewScreen(
                             Button(
                                 onClick = {
                                     val dialCode = currentIsp.ussdFormat.format(ocrExtractedDigits)
-                                    val intent = Intent(Intent.ACTION_DIAL).apply {
+                                    val intent = Intent(Intent.ACTION_CALL).apply {
                                         data = Uri.fromParts("tel", dialCode, null)
                                     }
                                     context.startActivity(intent)
