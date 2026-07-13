@@ -50,7 +50,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 enum class Isp(val label: String, val ussdFormat: String, val color: Color) {
-    TELKOMCEL("Telkomcel", "*122*%s#", Color(0xFFFF9800)),
+    TELKOMCEL("Telkomcel", "*122*%s#", Color(0xFFB71C1C)),
     TELEMOR("Telemor", "*120*%s#", Color(0xFFFDD835)),
     TT("TT", "100%s", Color(0xFF1565C0))
 }
@@ -223,7 +223,7 @@ fun ImagePreviewScreen(
                                 )
                             ) {
                                 Text(
-                                    text = "Dial ${currentIsp.label}",
+                                    text = "Uza ${currentIsp.label}",
                                     color = Color.White,
                                     fontSize = 16.sp,
                                     fontWeight = FontWeight.Bold
