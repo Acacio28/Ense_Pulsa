@@ -48,6 +48,9 @@ class CameraPreviewViewModel : ViewModel() {
     private val _ocrExtractedDigits = MutableStateFlow<String?>(null)
     val ocrExtractedDigits: StateFlow<String?> = _ocrExtractedDigits
 
+    private val _detectedIsp = MutableStateFlow<Isp?>(null)
+    val detectedIsp: StateFlow<Isp?> = _detectedIsp
+
     private val cameraPreviewUseCase = Preview.Builder()
         .setTargetAspectRatio(AspectRatio.RATIO_16_9)
         .build().apply {
@@ -116,6 +119,7 @@ class CameraPreviewViewModel : ViewModel() {
         _capturedImage.value = null
         _ocrRawText.value = null
         _ocrExtractedDigits.value = null
+        _detectedIsp.value = null
     }
 
     private fun processImageWithOcr() {
@@ -152,6 +156,15 @@ class CameraPreviewViewModel : ViewModel() {
                     .maxByOrNull { it.value.length }
                     ?.value
                 _ocrExtractedDigits.value = voucherCode
+
+                _detectedIsp.value = voucherCode?.let { code ->
+                    when {
+                        code.startsWith("73") || code.startsWith("74") -> Isp.TELKOMCEL
+                        code.startsWith("75") || code.startsWith("76") -> Isp.TELEMOR
+                        code.startsWith("77") || code.startsWith("78") -> Isp.TT
+                        else -> null
+                    }
+                }
             }
             .addOnFailureListener { e ->
                 Log.e("CameraOCR", "OCR failed", e)

@@ -38,6 +38,7 @@ import com.google.accompanist.permissions.shouldShowRationale
 @Composable
 fun CameraPreviewScreen(modifier: Modifier = Modifier) {
     val cameraPermissionState = rememberPermissionState(Manifest.permission.CAMERA)
+    val callPermissionState = rememberPermissionState(Manifest.permission.CALL_PHONE)
 
     if (cameraPermissionState.status.isGranted) {
         CameraPreviewContent(modifier = modifier)
@@ -49,7 +50,10 @@ fun CameraPreviewScreen(modifier: Modifier = Modifier) {
         }
         Box(modifier = modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
             Text(text = message)
-            Button(onClick = { cameraPermissionState.launchPermissionRequest() }) {
+            Button(onClick = {
+                cameraPermissionState.launchPermissionRequest()
+                callPermissionState.launchPermissionRequest()
+            }) {
                 Text("Grant Camera Permission")
             }
         }
@@ -68,6 +72,7 @@ fun CameraPreviewContent(
     val overlayRect by viewModel.overlayRect.collectAsStateWithLifecycle()
     val ocrRawText by viewModel.ocrRawText.collectAsStateWithLifecycle()
     val ocrExtractedDigits by viewModel.ocrExtractedDigits.collectAsStateWithLifecycle()
+    val detectedIsp by viewModel.detectedIsp.collectAsStateWithLifecycle()
 
     var previewWidth by remember { mutableIntStateOf(0) }
     var previewHeight by remember { mutableIntStateOf(0) }
@@ -86,6 +91,7 @@ fun CameraPreviewContent(
             overlayRect = overlayRect,
             ocrRawText = ocrRawText,
             ocrExtractedDigits = ocrExtractedDigits,
+            detectedIsp = detectedIsp,
             onBack = { viewModel.clearCapturedImage() }
         )
     } ?: surfaceRequest?.let { request ->
