@@ -61,10 +61,9 @@ fun ImagePreviewScreen(
     overlayRect: RectF?,
     ocrRawText: String?,
     ocrExtractedDigits: String?,
-    detectedIsp: Isp?,
     onBack: () -> Unit
 ) {
-    var selectedIsp by remember { mutableStateOf(detectedIsp) }
+    var selectedIsp by remember { mutableStateOf<Isp?>(null) }
     var showControls by remember { mutableStateOf(false) }
     val boxPulse = remember { Animatable(1f) }
     val context = LocalContext.current
@@ -215,7 +214,14 @@ fun ImagePreviewScreen(
                                     val intent = Intent(Intent.ACTION_CALL).apply {
                                         data = Uri.fromParts("tel", dialCode, null)
                                     }
-                                    context.startActivity(intent)
+                                    try {
+                                        context.startActivity(intent)
+                                    } catch (e: SecurityException) {
+                                        val fallback = Intent(Intent.ACTION_DIAL).apply {
+                                            data = Uri.fromParts("tel", dialCode, null)
+                                        }
+                                        context.startActivity(fallback)
+                                    }
                                 },
                                 modifier = Modifier.fillMaxWidth().height(48.dp),
                                 shape = RoundedCornerShape(12.dp),
