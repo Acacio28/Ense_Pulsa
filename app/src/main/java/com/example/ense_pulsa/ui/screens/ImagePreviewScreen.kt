@@ -214,7 +214,14 @@ fun ImagePreviewScreen(
                                     val intent = Intent(Intent.ACTION_CALL).apply {
                                         data = Uri.fromParts("tel", dialCode, null)
                                     }
-                                    context.startActivity(intent)
+                                    try {
+                                        context.startActivity(intent)
+                                    } catch (e: SecurityException) {
+                                        val fallback = Intent(Intent.ACTION_DIAL).apply {
+                                            data = Uri.fromParts("tel", dialCode, null)
+                                        }
+                                        context.startActivity(fallback)
+                                    }
                                 },
                                 modifier = Modifier.fillMaxWidth().height(48.dp),
                                 shape = RoundedCornerShape(12.dp),
