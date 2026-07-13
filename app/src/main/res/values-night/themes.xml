@@ -1,0 +1,4 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Base.Theme.Ense_Pulsa" parent="android:Theme.Material.Light.NoActionBar">
+    </style>
+</resources>
