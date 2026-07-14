@@ -3,50 +3,46 @@
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
-    <!-- Background split into 3 ISP colors -->
-    <!-- Telkomcel - Dark Red -->
     <path
-        android:fillColor="#B71C1C"
-        android:pathData="M0,0 L108,0 L108,36 L0,36 Z" />
-    <!-- Telemor - Yellow -->
+        android:fillColor="#FFFFFF"
+        android:pathData="M31,36 L77,36 L77,72 L31,72 Z"
+        android:strokeWidth="3"
+        android:strokeColor="#FFFFFF" />
     <path
-        android:fillColor="#FDD835"
-        android:pathData="M0,36 L108,36 L108,72 L0,72 Z" />
-    <!-- TT - Blue -->
+        android:fillColor="#FFFFFF"
+        android:pathData="M43,54 L65,54"
+        android:strokeWidth="4"
+        android:strokeColor="#FFFFFF" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M43,45 L65,45"
+        android:strokeWidth="4"
+        android:strokeColor="#FFFFFF" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M43,63 L65,63"
+        android:strokeWidth="4"
+        android:strokeColor="#FFFFFF" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M40,28 L40,80 L68,80 L68,28 Z"
+        android:strokeWidth="0"
+        android:strokeColor="#FFFFFF" />
     <path
         android:fillColor="#1565C0"
-        android:pathData="M0,72 L108,72 L108,108 L0,108 Z" />
-
-    <!-- Scan/voucher icon overlay on top -->
-    <!-- Phone outline -->
+        android:pathData="M42,30 L42,78 L66,78 L66,30 Z" />
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M44,30 C44,28.9 44.9,28 46,28 L62,28 C63.1,28 64,28.9 64,30 L64,78 C64,79.1 63.1,80 62,80 L46,80 C44.9,80 44,79.1 44,78 Z" />
-    <path
-        android:fillColor="#1A000000"
-        android:pathData="M47,32 L61,32 L61,72 L47,72 Z" />
-    <!-- Screen -->
+        android:pathData="M48,48 L60,48 L60,50 L48,50 Z" />
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M49,35 L59,35 L59,58 L49,58 Z" />
-    <!-- Scan lines on screen -->
-    <path
-        android:fillColor="#B71C1C"
-        android:pathData="M51,40 L57,40"
-        android:strokeWidth="1.5"
-        android:strokeColor="#B71C1C" />
-    <path
-        android:fillColor="#FDD835"
-        android:pathData="M51,45 L57,45"
-        android:strokeWidth="1.5"
-        android:strokeColor="#FDD835" />
-    <path
-        android:fillColor="#1565C0"
-        android:pathData="M51,50 L57,50"
-        android:strokeWidth="1.5"
-        android:strokeColor="#1565C0" />
-    <!-- Home button -->
+        android:pathData="M48,57 L60,57 L60,59 L48,59 Z" />
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M52,75 C52,74.45 52.45,74 53,74 L55,74 C55.55,74 56,74.45 56,75 C56,75.55 55.55,76 55,76 L53,76 C52.45,76 52,75.55 52,75 Z" />
+        android:pathData="M48,66 L56,66 L56,68 L48,68 Z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M48,38 L60,38"
+        android:strokeWidth="2"
+        android:strokeColor="#FFFFFF" />
 </vector>
