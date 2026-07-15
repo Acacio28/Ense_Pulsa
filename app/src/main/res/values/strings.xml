@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Ense_Pulsa</string>
+    <string name="camera_rationale">This app needs the camera to scan text. Please allow it.</string>
+    <string name="camera_required">Camera permission is required to use this feature.</string>
+    <string name="grant_camera">Grant Camera Permission</string>
+    <string name="select_isp">Select ISP:</string>
+    <string name="uza">Uza</string>
+    <string name="no_voucher">No voucher code detected</string>
+    <string name="back">Back</string>
+    <string name="captured_image">Captured image</string>
 </resources>

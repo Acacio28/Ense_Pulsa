@@ -44,7 +44,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import com.example.ense_pulsa.R
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -77,7 +79,7 @@ fun ImagePreviewScreen(
     Box(modifier = Modifier.fillMaxSize()) {
         Image(
             bitmap = bitmap.asImageBitmap(),
-            contentDescription = "Captured image",
+            contentDescription = stringResource(R.string.captured_image),
             modifier = Modifier.fillMaxSize(),
             contentScale = ContentScale.Crop
         )
@@ -132,7 +134,7 @@ fun ImagePreviewScreen(
         ) {
             Icon(
                 imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                contentDescription = "Back"
+                contentDescription = stringResource(R.string.back)
             )
         }
 
@@ -150,7 +152,7 @@ fun ImagePreviewScreen(
                             .padding(bottom = 8.dp)
                     ) {
                         Text(
-                            text = "Select ISP:",
+                            text = stringResource(R.string.select_isp),
                             color = Color.White.copy(alpha = 0.9f),
                             fontSize = 14.sp,
                             fontWeight = FontWeight.Medium
@@ -239,7 +241,7 @@ fun ImagePreviewScreen(
                         }
                     } else {
                         Text(
-                            text = "No voucher code detected",
+                            text = stringResource(R.string.no_voucher),
                             color = Color.White.copy(alpha = 0.6f),
                             fontSize = 16.sp,
                             modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp),

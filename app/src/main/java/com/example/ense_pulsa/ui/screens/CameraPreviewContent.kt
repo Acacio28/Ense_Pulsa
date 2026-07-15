@@ -26,6 +26,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLifecycleOwner
+import androidx.compose.ui.res.stringResource
+import com.example.ense_pulsa.R
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -43,14 +45,14 @@ fun CameraPreviewScreen(modifier: Modifier = Modifier) {
         CameraPreviewContent(modifier = modifier)
     } else {
         val message = if (cameraPermissionState.status.shouldShowRationale) {
-            "This app needs the camera to scan text. Please allow it."
+            stringResource(R.string.camera_rationale)
         } else {
-            "Camera permission is required to use this feature."
+            stringResource(R.string.camera_required)
         }
         Box(modifier = modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
             Text(text = message)
             Button(onClick = { cameraPermissionState.launchPermissionRequest() }) {
-                Text("Grant Camera Permission")
+                Text(stringResource(R.string.grant_camera))
             }
         }
     }
