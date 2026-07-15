@@ -48,6 +48,9 @@ class CameraPreviewViewModel : ViewModel() {
     private val _ocrExtractedDigits = MutableStateFlow<String?>(null)
     val ocrExtractedDigits: StateFlow<String?> = _ocrExtractedDigits
 
+    private val _isOcrLoading = MutableStateFlow(false)
+    val isOcrLoading: StateFlow<Boolean> = _isOcrLoading
+
     private val cameraPreviewUseCase = Preview.Builder()
         .setTargetAspectRatio(AspectRatio.RATIO_16_9)
         .build().apply {
@@ -121,6 +124,7 @@ class CameraPreviewViewModel : ViewModel() {
     private fun processImageWithOcr() {
         val fullBitmap = _capturedImage.value ?: return
         val rectF = _overlayRect.value ?: return
+        _isOcrLoading.value = true
 
         val cropLeft = (rectF.left * fullBitmap.width).toInt().coerceAtLeast(0)
         val cropTop = (rectF.top * fullBitmap.height).toInt().coerceAtLeast(0)
@@ -152,9 +156,11 @@ class CameraPreviewViewModel : ViewModel() {
                     .maxByOrNull { it.value.length }
                     ?.value
                 _ocrExtractedDigits.value = voucherCode
+                _isOcrLoading.value = false
             }
             .addOnFailureListener { e ->
                 Log.e("CameraOCR", "OCR failed", e)
+                _isOcrLoading.value = false
             }
     }
 

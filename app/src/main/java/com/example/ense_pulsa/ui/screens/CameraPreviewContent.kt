@@ -6,7 +6,10 @@ import androidx.camera.compose.CameraXViewfinder
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -70,6 +73,7 @@ fun CameraPreviewContent(
     val overlayRect by viewModel.overlayRect.collectAsStateWithLifecycle()
     val ocrRawText by viewModel.ocrRawText.collectAsStateWithLifecycle()
     val ocrExtractedDigits by viewModel.ocrExtractedDigits.collectAsStateWithLifecycle()
+    val isOcrLoading by viewModel.isOcrLoading.collectAsStateWithLifecycle()
 
     var previewWidth by remember { mutableIntStateOf(0) }
     var previewHeight by remember { mutableIntStateOf(0) }
@@ -90,6 +94,15 @@ fun CameraPreviewContent(
             ocrExtractedDigits = ocrExtractedDigits,
             onBack = { viewModel.clearCapturedImage() }
         )
+        if (isOcrLoading) {
+            Box(modifier = Modifier.fillMaxSize().background(Color.Black.copy(alpha = 0.5f)), contentAlignment = Alignment.Center) {
+                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                    CircularProgressIndicator(color = Color.White)
+                    Spacer(modifier = Modifier.padding(top = 16.dp))
+                    Text("Processing OCR...", color = Color.White)
+                }
+            }
+        }
     } ?: surfaceRequest?.let { request ->
         Box(modifier = modifier.fillMaxSize()) {
             CameraXViewfinder(
