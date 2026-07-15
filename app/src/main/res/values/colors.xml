@@ -2,4 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="telkomcel">#FFB71C1C</color>
+    <color name="telemor">#FFFDD835</color>
+    <color name="tt">#FF1565C0</color>
+    <color name="dial_green">#FF4CAF50</color>
 </resources>
